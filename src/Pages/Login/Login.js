@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div className="hero min-h-screen">
+      <div className="hero-content flex-col">
+        <div className="card w-full max-w-md shadow-2xl">
           <div className="card-body">
             <div className="form-control">
               <label className="label">
@@ -33,7 +33,17 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-secondary">Login</button>
+            </div>
+            <p className="label-text-alt">
+              New to doctor's Home ?
+              <Link className="text-primary text-sm" to="/signup">
+                create an account
+              </Link>
+            </p>
+            <h4 className="text-center mt-6">OR</h4>
+            <div className="form-control">
+              <button className="btn btn-primary">Continue With Google</button>
             </div>
           </div>
         </div>
