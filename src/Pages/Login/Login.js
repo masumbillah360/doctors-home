@@ -43,7 +43,9 @@ const Login = () => {
             </p>
             <h4 className="text-center mt-6">OR</h4>
             <div className="form-control">
-              <button className="btn btn-primary">Continue With Google</button>
+              <button className="btn btn-outline btn-primary">
+                Continue With Google
+              </button>
             </div>
           </div>
         </div>
