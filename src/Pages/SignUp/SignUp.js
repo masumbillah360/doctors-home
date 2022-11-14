@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const SignUp = () => {
   return (
-    <div className="hero min-h-screen">
-      <div className="hero-content flex-col">
-        <div className="card w-full max-w-md shadow-2xl">
-          <div className="card-body">
+    <div className="hero">
+      <div className="hero-content">
+        <div className="card shadow-2xl">
+          <div className="card-body w-96">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -14,7 +14,7 @@ const SignUp = () => {
               <input
                 type="text"
                 placeholder="Name"
-                className="input input-bordered"
+                className="input input-bordered w-full"
               />
             </div>
             <div className="form-control">
@@ -42,8 +42,8 @@ const SignUp = () => {
                 </Link>
               </label>
             </div>
-            <div className="form-control mt-6">
-              <button className="btn btn-secondary">Login</button>
+            <div className="form-control mt-1">
+              <button className="btn btn-secondary">Sign UP</button>
             </div>
             <p className="label-text-alt">
               Already Have an account?
@@ -51,7 +51,7 @@ const SignUp = () => {
                 Login Here!
               </Link>
             </p>
-            <h4 className="text-center mt-6">OR</h4>
+            <h4 className="divider m-0">OR</h4>
             <div className="form-control">
               <button className="btn btn-outline btn-primary">
                 Continue With Google
