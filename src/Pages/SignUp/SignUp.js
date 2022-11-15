@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const SignUp = () => {
   return (
-    <div className="flex justify-center items-center my-20">
+    <div className="flex justify-center items-center my-12">
       <div className="card shadow-2xl">
         <div className="card-body max-w-sm w-full">
           <div className="form-control">

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="flex justify-center items-center md:my-32">
+    <div className="flex justify-center items-center md:my-16">
       <div className="card shadow-2xl">
         <div className="card-body max-w-sm">
           <div className="form-control">

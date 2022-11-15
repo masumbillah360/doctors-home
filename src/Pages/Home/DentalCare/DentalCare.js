@@ -3,7 +3,7 @@ import teeth from "../../../assets/images/treatment.png";
 
 const DentalCare = () => {
   return (
-    <div className="grid grid-cols-12 justify-center items-center md:px-32 my-36">
+    <div className="grid grid-cols-12 justify-center items-center md:gap-6 md:px-32 my-36">
       <img
         src={teeth}
         className="rounded-lg shadow-2xl col-span-12 md:col-span-5 w-full"
