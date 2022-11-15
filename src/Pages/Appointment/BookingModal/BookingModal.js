@@ -22,6 +22,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
       email,
       phone,
     };
+    console.log(bookingInfo);
     setTreatment(null);
     toast.success("successfully added a treatment");
   };
