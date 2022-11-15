@@ -8,7 +8,7 @@ const SingleTestimonial = ({ info }) => {
         <p>{desc}</p>
         <div className="card-actions justify-start items-center">
           <img src={thumb} alt="" />
-          <div className="ml-3">
+          <div className="md:ml-3">
             <h3 className="font-bold">{name}</h3>
             <p>{address}</p>
           </div>

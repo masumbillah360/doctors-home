@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import footerImg from "../../../assets/images/footer.png";
 
 const Footer = () => {
-  const style = {
+  const styles = {
     backgroundImage: footerImg,
     backgroundSize: "100 100",
   };
   return (
     <footer
+      style={styles}
       className="footer p-10 flex justify-between flex-col md:flex-row"
-      style={style}
     >
       <div>
         <span className="footer-title">Services</span>

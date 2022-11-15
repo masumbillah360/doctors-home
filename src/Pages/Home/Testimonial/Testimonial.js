@@ -33,10 +33,10 @@ const Testimonial = () => {
           <h5 className="text-primary font-bold">Testimonial</h5>
           <h3 className="text-3xl">What Our Patients Says</h3>
         </div>
-        <img className="w-44" src={colon} alt="" />
+        <img className="w-32 md:w-44" src={colon} alt="" />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-5">
         {feedBackInfo.map((info, idx) => (
           <SingleTestimonial key={idx} info={info} />
         ))}

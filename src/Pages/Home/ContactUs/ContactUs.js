@@ -4,7 +4,7 @@ const ContactUs = () => {
   return (
     <div className="hero">
       <div className="hero-content">
-        <div className="w-96 text-center">
+        <div className="text-center">
           <h5 className="text-primary font-bold mb-2">Contact Us</h5>
           <h3 className="text-3xl mb-6">Stay Connected with us</h3>
           <div>

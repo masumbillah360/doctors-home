@@ -1,14 +1,17 @@
 import React from "react";
-import bg from "../../../assets/images/bg.png";
 import chair from "../../../assets/images/chair.png";
 
 const Banner = () => {
   return (
     <div className="hero min-h-sceen">
-      <img className="w-full h-full" src={bg} alt="" />
+      {/* <img className="" src={bg} alt="" /> */}
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <img src={chair} className="w-1/2 rounded-lg shadow-2xl" alt="" />
-        <div className="w-1/2">
+        <img
+          src={chair}
+          className="w-full md:w-1/2 rounded-lg shadow-2xl"
+          alt=""
+        />
+        <div className="w-full md:w-1/2">
           <h1 className="text-5xl font-bold pr-5">
             Your New Smile Starts Here
           </h1>
