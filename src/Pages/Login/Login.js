@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
+  const { signInUser, setUser, setError } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const handleLogin = (data) => {
-    console.log(data);
+    signInUser(data.email, data.password)
+      .then((result) => {
+        console.log(result);
+        setUser(result.user);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err.message);
+      });
   };
   return (
     <div className="flex justify-center items-center md:my-32">

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const SignUp = () => {
+  const { signInUser, setError, error, updateInfo } = useContext(AuthContext);
   const {
     register,
     formState: { errors },
@@ -10,7 +12,16 @@ const SignUp = () => {
   } = useForm();
   const handleSignUp = (data) => {
     console.log(data);
-    console.log(errors);
+    signInUser(data.email, data.password)
+      .then((result) => {
+        const profile = {
+          displayName: data?.name,
+        };
+        updateInfo(profile)
+          .then(() => {})
+          .catch((err) => setError(err.message));
+      })
+      .catch((err) => setError(err?.message));
   };
   return (
     <div className="flex justify-center items-center my-12">
@@ -54,7 +65,7 @@ const SignUp = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 placeholder="password"
                 {...register("password", {
                   required: "Please enter valied info",
@@ -83,6 +94,7 @@ const SignUp = () => {
               </label>
             </div>
             <div className="form-control mt-1">
+              {error && <span className="text-red-600">{error}</span>}
               <input
                 type="submit"
                 className="btn btn-secondary"
