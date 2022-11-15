@@ -13,7 +13,7 @@ const AppointmentBanner = ({ selectedDate, setSelectedDate }) => {
           alt=""
         />
         <div className="w-full md:w-1/2">
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center text-black">
             <DayPicker
               mode="single"
               selected={selectedDate}
