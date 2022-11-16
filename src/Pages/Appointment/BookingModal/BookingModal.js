@@ -1,9 +1,11 @@
 import { format } from "date-fns";
-import React from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
-const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
+const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
   //   const { name, slots } = treatment;
+  const { user } = useContext(AuthContext);
   const bookingDate = format(selectedDate, "PP");
 
   const handleSub = (e) => {
@@ -16,15 +18,33 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
     const phone = form.phone.value;
 
     const bookingInfo = {
-      name,
+      patientName: name,
+      treatmentName: treatment?.name,
       bookingDate: date,
       slot,
       email,
       phone,
     };
-    console.log(bookingInfo);
-    setTreatment(null);
-    toast.success("successfully added a treatment");
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookingInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          setTreatment(null);
+          toast.success("successfully added a treatment");
+          console.log(bookingInfo);
+          refetch();
+        } else {
+          toast.error(`${data.message}`);
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -59,6 +79,16 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
             <input
               placeholder="Full Name"
               name="name"
+              disabled
+              defaultValue={user?.displayName}
+              className="input input-bordered w-full"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              disabled
+              defaultValue={user?.email}
               className="input input-bordered w-full"
             />
             <input
@@ -66,12 +96,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
               name="phone"
               className="input input-bordered w-full"
             />
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              className="input input-bordered w-full"
-            />
+
             <input type="submit" value="Submit" className="btn btn-accent" />
           </form>
         </div>

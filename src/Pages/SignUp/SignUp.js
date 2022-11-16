@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const SignUp = () => {
-  const { signInUser, setError, error, updateInfo } = useContext(AuthContext);
+  const { createUser, setError, error, updateInfo } = useContext(AuthContext);
   const {
     register,
     formState: { errors },
@@ -12,7 +12,7 @@ const SignUp = () => {
   } = useForm();
   const handleSignUp = (data) => {
     console.log(data);
-    signInUser(data.email, data.password)
+    createUser(data.email, data.password)
       .then((result) => {
         const profile = {
           displayName: data?.name,
