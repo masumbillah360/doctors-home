@@ -13,7 +13,7 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   console.log(user);
   console.log(error);
@@ -21,15 +21,19 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const signInUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const updateInfo = (profile) => {
+    setLoading(true);
     return updateProfile(auth.currentUser, profile);
   };
   const logOutUser = () => {
+    setLoading(true);
     return signOut(auth);
   };
   useEffect(() => {
