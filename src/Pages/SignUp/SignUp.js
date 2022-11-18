@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const SignUp = () => {
@@ -10,6 +10,7 @@ const SignUp = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const navigate = useNavigate();
   const handleSignUp = (data) => {
     console.log(data);
     createUser(data.email, data.password)
@@ -18,10 +19,28 @@ const SignUp = () => {
           displayName: data?.name,
         };
         updateInfo(profile)
-          .then(() => {})
+          .then(() => {
+            saveUser(data?.name, data?.email);
+          })
           .catch((err) => setError(err.message));
       })
       .catch((err) => setError(err?.message));
+  };
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="flex justify-center items-center my-12">
